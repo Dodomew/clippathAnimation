@@ -60,9 +60,55 @@ body
   padding: 1vh;
 }
 
+#lines-to-cross-one-hover
+{
+  display: block;
+  transition: all 0.5s;
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 20%, 0 20%, 0 40%, 100% 40%, 100% 60%, 0 60%, 0 80%, 100% 80%, 100% 100%, 0% 100%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 20%, 0 20%, 0 40%, 100% 40%, 100% 60%, 0 60%, 0 80%, 100% 80%, 100% 100%, 0% 100%);
+  background: red;
+}
+
+#circleFromBigToSmallHover
+{
+  display: block;
+  -webkit-clip-path: circle(50% at 50% 50%);
+  clip-path: circle(50% at 50% 50%);
+  background: orange;
+  transition: all 1s;
+}
+
+#hover-me-three
+{
+  display: inline-block;
+}
+
+#hover-me-two
+{
+  display: inline-block;
+}
+
+#hover-me-two:hover > #lines-to-cross-one-hover
+{
+    -webkit-clip-path: polygon(20% 0, 100% 80%, 50% 70%, 20% 100%, 0 80%, 80% 0, 100% 20%, 70% 50%, 100% 80%, 100% 80%, 80% 100%, 0 20%);
+    clip-path: polygon(20% 0, 100% 80%, 50% 70%, 20% 100%, 0 80%, 80% 0, 100% 20%, 70% 50%, 100% 80%, 100% 80%, 80% 100%, 0 20%);
+    background: blue;
+}
+
+#hover-me-one
+{
+  display: inline-block;
+}
+
+#hover-me-one:hover > #circleFromBigToSmallHover
+{
+  -webkit-clip-path: circle(5.0% at 50% 50%);
+  clip-path: circle(5.0% at 50% 50%);
+}
+
 #square-into-triangle-into-circle
 {
-  animation: challenge-accepted 1.66s ease infinite;
+  animation: squareToTriangleToCircle 1.5s ease infinite;
 }
 
 #trapezoid-into-parallelogram-into-rhombus
@@ -79,21 +125,6 @@ body
 {
   animation: linesCrossOne 1s ease infinite;
   background: red;
-}
-
-#lines-to-cross-one-hover
-{
-  transition: all 0.5s;
-  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 20%, 0 20%, 0 40%, 100% 40%, 100% 60%, 0 60%, 0 80%, 100% 80%, 100% 100%, 0% 100%);
-  clip-path: polygon(0% 0%, 100% 0%, 100% 20%, 0 20%, 0 40%, 100% 40%, 100% 60%, 0 60%, 0 80%, 100% 80%, 100% 100%, 0% 100%);
-  background: red;
-}
-
-#lines-to-cross-one-hover:hover
-{
-    -webkit-clip-path: polygon(20% 0, 100% 80%, 50% 70%, 20% 100%, 0 80%, 80% 0, 100% 20%, 70% 50%, 100% 80%, 100% 80%, 80% 100%, 0 20%);
-    clip-path: polygon(20% 0, 100% 80%, 50% 70%, 20% 100%, 0 80%, 80% 0, 100% 20%, 70% 50%, 100% 80%, 100% 80%, 80% 100%, 0 20%);
-    background: blue;
 }
 
 #lines-to-cross-two
@@ -154,18 +185,30 @@ body
   background: #1EB287;
 }
 
-#circleFromBigToSmallHover
+#rotatingTriangleTwo
 {
-  -webkit-clip-path: circle(50% at 50% 50%);
-  clip-path: circle(50% at 50% 50%);
-  background: orange;
-  transition: all 1s;
+  animation: rotatingTriangleTwo 1.5s ease infinite;
+  background: #BF1363;
 }
 
-#circleFromBigToSmallHover:hover
+#lineToRight
 {
-  -webkit-clip-path: circle(5.0% at 50% 50%);
-  clip-path: circle(5.0% at 50% 50%);
+  animation: lineToRight 1s ease infinite;
+  background: #F39237;
+}
+
+#triangleToSquare
+{
+  transition: all 0.5s ease;
+  background: #BF1363;
+  -webkit-clip-path: polygon(50% 10%, 50% 10%, 95% 90%, 5% 90%);
+  clip-path: polygon(50% 10%, 50% 10%, 95% 90%, 5% 90%);
+}
+
+#hover-me-three:hover > #triangleToSquare
+{
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
 /* blue: #158BC5 */
@@ -179,7 +222,7 @@ img
 Use a polygon with 4 corners as the square. (trapezoid)
 */
 
-@keyframes challenge-accepted
+@keyframes squareToTriangleToCircle
 {
   0%
   {
@@ -587,4 +630,74 @@ Use a polygon with 4 corners as the square. (trapezoid)
     -webkit-clip-path: circle(50% at 50% 50%);
     clip-path: circle(50% at 50% 50%);
   }
+}
+
+@keyframes rotatingTriangleTwo
+{
+  0%
+  {
+    -webkit-clip-path: polygon(0 0, 0% 100%, 100% 100%);
+    clip-path: polygon(0 0, 0% 100%, 100% 100%);
+  }
+
+  25%
+  {
+    -webkit-clip-path: polygon(100% 0, 0 0, 0 100%);
+    clip-path: polygon(100% 0, 0 0, 0 100%);
+  }
+
+  50%
+  {
+    -webkit-clip-path: polygon(100% 100%, 100% 0, 0 0);
+    clip-path: polygon(100% 100%, 100% 0, 0 0);
+  }
+
+  75%
+  {
+    -webkit-clip-path: polygon(0 100%, 99% 100%, 100% 0);
+    clip-path: polygon(0 100%, 99% 100%, 100% 0);
+  }
+
+  100%
+  {
+    -webkit-clip-path: polygon(0 0, 0% 100%, 100% 100%);
+    clip-path: polygon(0 0, 0% 100%, 100% 100%);
+  }
+}
+
+@keyframes lineToRight
+{
+  0%
+  {
+    -webkit-clip-path: polygon(0 0, 20% 0, 20% 100%, 0% 100%);
+    clip-path: polygon(0 0, 20% 0, 20% 100%, 0% 100%);
+  }
+  
+  66%
+  {
+    -webkit-clip-path: polygon(40% 0, 100% 0, 100% 100%, 40% 100%);
+    clip-path: polygon(40% 0, 100% 0, 100% 100%, 40% 100%);
+  }
+
+  100%
+  {
+    -webkit-clip-path: polygon(80% 0, 100% 0, 100% 100%, 80% 100%);
+    clip-path: polygon(80% 0, 100% 0, 100% 100%, 80% 100%);
+  }
+}
+
+@keyframes triangleToSquare
+{
+  0%
+  {
+    -webkit-clip-path: polygon(50% 10%, 50% 10%, 95% 90%, 5% 90%);
+    clip-path: polygon(50% 10%, 50% 10%, 95% 90%, 5% 90%);
+  }
+
+  100%
+  {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+
 }
